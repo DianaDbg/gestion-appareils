@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { AppareilService } from '../service/appareil.service';
+import { Component, OnInit } from "@angular/core";
+import { AppareilService } from "../service/appareil.service";
 @Component({
-  selector: 'app-appareil-view',
-  templateUrl: './appareil-view.component.html',
-  styleUrls: ['./appareil-view.component.scss']
+  selector: "app-appareil-view",
+  templateUrl: "./appareil-view.component.html",
+  styleUrls: ["./appareil-view.component.scss"]
 })
 export class AppareilViewComponent implements OnInit {
-
- isAuth = false;
+  isAuth = false;
   lastUpdate = new Promise((resolve, reject) => {
     const date = new Date();
-    setTimeout(
-      () => {
-        resolve(date);
-      }, 2000
-    );
+    setTimeout(() => {
+      resolve(date);
+    }, 2000);
   });
 
   appareils: any[];
   constructor(private appareilService: AppareilService) {
-    setTimeout(
-      () => {
+    setTimeout(() => {
       this.isAuth = true;
     }, 4000);
   }
@@ -36,5 +32,4 @@ export class AppareilViewComponent implements OnInit {
   onEteindre() {
     this.appareilService.switchOffAll();
   }
-
 }
